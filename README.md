@@ -14,7 +14,7 @@
 - ⚡ **Local generation** — POSTs to an OpenAI-compatible `/v1/images/generations` endpoint (default: `flux2-klein-4b` on `http://192.168.0.110:8002`). No cloud, no API bills. 💸
 - 📁 **Workspace-only output** — the agent chooses *where* the PNG lands, but it **cannot** land outside the workspace. Ever. 🔒
 - 🚦 **FIFO queue** — the endpoint generates **one image at a time**; concurrent requests are automatically serialized, and the agent is told how many images are ahead of it. ⏳
-- 👀 **Verify with `image_describe`** — pixels never reach the main model. The tool returns a path; the agent feeds it to the `image_describe` tool to *see* the result. 🔄
+- 👀 **Verify with `image_describe`** — pixels never reach the main model. The tool returns a path; the agent feeds it to the `image_describe` tool to *see* the result. 🔄 That tool comes from the companion plugin [pi-paste-image-to-model](https://github.com/F1LT3R/pi-paste-image-to-model#%EF%B8%8F-agent-tool-image_describe) — optional, not a dependency (see [Related](#-related)).
 - 🐢 **No dependencies** — plain TypeScript + Node builtins. Zero `npm install`. 🪶
 
 ---
@@ -181,6 +181,12 @@ pi-text-to-image/
 - 🐢 512×512 ≈ 30–60 s on the local machine; 1280×720 takes longer. The agent is *told* the request is queued, not frozen.
 - 🚫 Intentionally simple: no batching (endpoint can't), no model switching (locked by design), no cloud fallback.
 - 🩹 Errors are returned as normal tool results (the `image_describe` convention) so the agent can read them and self-correct.
+
+---
+
+## 🧩 Related
+
+- [pi-paste-image-to-model](https://github.com/F1LT3R/pi-paste-image-to-model) — the companion plugin that provides the `image_describe` tool referenced throughout this README (see [its `image_describe` section](https://github.com/F1LT3R/pi-paste-image-to-model#%EF%B8%8F-agent-tool-image_describe)). It sends an image file to a vision model and injects the text description into the agent's context — the "eyes" that let an agent verify a generated image matches the prompt. This plugin does **not** depend on it; install it if you want the verify step in the loop.
 
 ---
 
