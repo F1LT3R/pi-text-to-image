@@ -1,0 +1,16 @@
+{
+  "name": "pi-text-to-image",
+  "version": "0.1.0",
+  "description": "Pi Coding Agent extension: generate images from text prompts via a local OpenAI-compatible FLUX endpoint. Saves PNGs inside the workspace, serialized through an internal FIFO queue.",
+  "license": "MIT",
+  "files": [
+    "index.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/F1LT3R/pi-text-to-image.git"
+  },
+  "pi": {
+    "extensions": ["./index.ts"]
+  }
+}

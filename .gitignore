@@ -1,0 +1,6 @@
+node_modules/
+images/
+
+# Pi agent state — session backups untracked by default; opt-in via manual .gitignore removal
+.pi/
+.DS_Store
